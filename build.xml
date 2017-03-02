@@ -1,0 +1,23 @@
+<project name="HOG - Release 4" default="test" basedir="." xmlns:sf="antlib:com.salesforce">
+
+	<property file="build.properties"/>
+	<property environment="env"/>
+
+	<!-- <taskdef resource="net/sf/antcontrib/antlib.xml">
+    <classpath>
+      <pathelement location="./ant-contrib-1.0b2.jar"/>
+    </classpath>
+  </taskdef> -->
+
+	<target name="retrieve">
+		<sf:retrieve username="${SRC_USERNAME}" password="${SRC_PASSWD}" serverurl="${SRC_URL}" retrieveTarget="src" unpackaged="src/package.xml"/>
+	</target>
+
+	<target name="deployValidate">
+		<sf:deploy username="${DEST_USERNAME}" password="${DEST_PASSWD}" serverurl="${DEST_URL}" deployRoot="src" rollbackOnError="true" checkonly="true"/>
+	</target>
+
+	<target name="deploy">
+		<sf:deploy username="${DEST_USERNAME}" password="${DEST_PASSWD}" serverurl="${DEST_URL}" deployRoot="src" rollbackOnError="true" />
+	</target>
+</project>
