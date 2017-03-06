@@ -1,13 +1,12 @@
-<project name="HOG - Release 4" default="test" basedir="." xmlns:sf="antlib:com.salesforce">
+<project name="TestCIIbmBluemix" default="test" xmlns:sf="antlib:com.salesforce" basedir=".">
 
-	<property file="build.properties"/>
 	<property environment="env"/>
 
-	<!-- <taskdef resource="net/sf/antcontrib/antlib.xml">
-    <classpath>
-      <pathelement location="./ant-contrib-1.0b2.jar"/>
-    </classpath>
-  </taskdef> -->
+	<taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+      <classpath>
+          <pathelement location="./ant-salesforce.jar" />
+      </classpath>
+  </taskdef>
 
 	<target name="retrieve">
 		<sf:retrieve username="${SRC_USERNAME}" password="${SRC_PASSWD}" serverurl="${SRC_URL}" retrieveTarget="src" unpackaged="src/package.xml"/>
